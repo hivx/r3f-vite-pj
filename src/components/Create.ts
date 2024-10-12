@@ -1,5 +1,5 @@
 // import * as THREE from 'three';
-// import { Scene } from './Scene';
+// import Scene from './Scene';
 
 // export const createBox = () => {
 //     const scale = { x: 6, y: 6, z: 6 };
