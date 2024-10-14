@@ -1,20 +1,19 @@
 import * as THREE from 'three';
-import { useLoader } from '@react-three/fiber';
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { ThreeEvent, useLoader } from '@react-three/fiber';
 
-const Dome = forwardRef((props, ref) => {
+type DomeProps = {
+  onDoubleClick: (event: ThreeEvent<MouseEvent>) => void;
+};
+
+const Dome: React.FC<DomeProps> = ({ onDoubleClick }) => {
   const texture = useLoader(THREE.TextureLoader, 'src/assets/image.jpg');
-  const domeRef = useRef<THREE.Mesh>(null);
-
-  // Tạo hình cầu với ảnh 360 độ
-  useImperativeHandle(ref, () => domeRef.current);
 
   return (
-    <mesh ref={domeRef} {...props}>
-      <sphereGeometry attach="geometry" args={[500, 60, 40]} />
-      <meshBasicMaterial attach="material" map={texture} side={THREE.BackSide} />
+    <mesh onDoubleClick={onDoubleClick}>
+      <sphereGeometry args={[500, 60, 40]} />
+      <meshBasicMaterial map={texture} side={THREE.BackSide} />
     </mesh>
   );
-});
+};
 
 export default Dome;
