@@ -1,35 +1,62 @@
-import * as THREE from 'three'
+import * as THREE from 'three';
 import { ThreeEvent } from '@react-three/fiber';
-import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { Html } from '@react-three/drei';
+import { LoginOutlined } from '@ant-design/icons';
+import { Tooltip } from 'antd';
 
-// Định nghĩa type cho props của handleDoubleClick (cho setCircles)
+// Định kiểu cho SetCircles
 type SetCirclesType = React.Dispatch<React.SetStateAction<JSX.Element[]>>;
 
-// Hàm tạo một hình tròn
-const createCircleMesh = (point: THREE.Vector3): JSX.Element => (
-  <mesh 
-    position={point} 
-    key={uuidv4()}
-  >
-    <sphereGeometry args={[10, 32, 32]} />
-    <meshBasicMaterial color={0x00ff00} />
-  </mesh>
-);
+// Hàm tạo icon LoginOutlined khi double-click
+const createLoginIcon = (
+    point: THREE.Vector3,
+    key: string,
+    removeCircle: (key: string) => void
+): JSX.Element => {
+  const handleClick = () => {
+    console.log('router');
+  };
+
+  const handleContextMenu = (event: React.MouseEvent) => {
+    event.preventDefault();
+    removeCircle(key);
+  };
+
+  return (
+    <Html position={point} key={key}>
+      <Tooltip title="Thanks for using antd. Have a nice day!">
+        <div 
+          onClick={handleClick}
+          onContextMenu={handleContextMenu} 
+          style={{ cursor: 'pointer', fontSize: '50px' }}
+        >
+          <LoginOutlined style={{ color: 'white' }} />
+        </div>
+      </Tooltip>
+    </Html>
+  );
+};
 
 // Hàm xử lý sự kiện double-click
 const handleDoubleClick = (
-  event: ThreeEvent<MouseEvent>, 
+  event: ThreeEvent<MouseEvent>,
   setCircles: SetCirclesType
-) => {
+): void => {
+  const key = uuidv4();
   const { point } = event;
 
-  console.log("Point-clicked:", point);
+  // console.log("Point-clicked:", point);
 
-  // Tạo một hình tròn tại điểm giao và cập nhật state
-  const newCircle = createCircleMesh(point);
+  const removeCircle = (removeKey: string) => {
+    setCircles(prevCircles => prevCircles.filter(circle => circle.key !== removeKey));
+  };
 
-  setCircles(prevCircles => [...prevCircles, newCircle]);
+  // Tạo icon mới
+  const newIcon = createLoginIcon(point, key, removeCircle);
+
+  // Cập nhật state với icon mới
+  setCircles(prevCircles => [...prevCircles, newIcon]);
 };
 
 export default handleDoubleClick;
