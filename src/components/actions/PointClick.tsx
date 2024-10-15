@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Html } from '@react-three/drei';
 import { LoginOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
+import { StyledPoint } from '../../style';
 
 // Định kiểu cho SetCircles
 type SetCirclesType = React.Dispatch<React.SetStateAction<JSX.Element[]>>;
@@ -15,7 +16,7 @@ const createLoginIcon = (
     removeCircle: (key: string) => void
 ): JSX.Element => {
   const handleClick = () => {
-    console.log('router');
+    console.log(point);
   };
 
   const handleContextMenu = (event: React.MouseEvent) => {
@@ -25,14 +26,13 @@ const createLoginIcon = (
 
   return (
     <Html position={point} key={key}>
-      <Tooltip title="Thanks for using antd. Have a nice day!">
-        <div 
+      <Tooltip title="Transittion BG">
+        <StyledPoint 
           onClick={handleClick}
-          onContextMenu={handleContextMenu} 
-          style={{ cursor: 'pointer', fontSize: '50px' }}
+          onContextMenu={handleContextMenu}
         >
-          <LoginOutlined style={{ color: 'white' }} />
-        </div>
+          <LoginOutlined />
+        </StyledPoint>
       </Tooltip>
     </Html>
   );

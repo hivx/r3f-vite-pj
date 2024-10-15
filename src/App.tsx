@@ -3,7 +3,9 @@ import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Global } from './style';
 import Controls from './components/Controls';
-import Scene from './components/Scene';
+import Scene1 from './components/Scene1';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Scene2 from './components/Scene2';
 
 const App: React.FC = () => {
   return (
@@ -14,12 +16,18 @@ const App: React.FC = () => {
           enableZoom={false}
           enablePan={true}
           enableDamping={true}
-          dampingFactor={0.2}
+          dampingFactor={0.5}
           autoRotate={false}
           rotateSpeed={-0.5}
         />
         <Suspense fallback={null}>
-          <Scene />
+          <Router>
+            <Routes>
+              <Route path="/" element={<Scene1 />} />
+              <Route path="/scene1" element={<Scene1 />} />
+              <Route path="/scene2" element={<Scene2 />} />
+            </Routes>
+          </Router>
         </Suspense>
       </Canvas>
     </>

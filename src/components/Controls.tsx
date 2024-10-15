@@ -38,7 +38,7 @@ const Controls: React.FC<ControlsProps> = ({
     }, [autoRotate, camera, dampingFactor, enableDamping, enablePan, enableZoom, gl, rotateSpeed]);
 
     useFrame((_, delta) => {
-        const speedMultiplier = 20;
+        const speedMultiplier = 50;
         controls.current?.update();
 
         if (controls.current) {

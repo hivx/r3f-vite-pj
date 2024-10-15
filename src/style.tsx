@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
     /* Reset box-sizing cho tất cả các phần tử */
@@ -43,4 +43,15 @@ export const Global = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif; /* Font chữ */
     color: rgb(0, 0, 0);
     }
+`;
+
+export const StyledPoint = styled.div`
+  cursor: pointer;
+  font-size: 30px;
+  color: rgb(25, 2, 241, 1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.5);
+  }
 `;

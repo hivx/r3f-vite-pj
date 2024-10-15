@@ -3,10 +3,11 @@ import { ThreeEvent, useLoader } from '@react-three/fiber';
 
 type DomeProps = {
   onDoubleClick: (event: ThreeEvent<MouseEvent>) => void;
+  background: string;
 };
 
-const Dome: React.FC<DomeProps> = ({ onDoubleClick }) => {
-  const texture = useLoader(THREE.TextureLoader, 'src/assets/image.jpg');
+const Dome: React.FC<DomeProps> = ({ onDoubleClick, background }) => {
+  const texture = useLoader(THREE.TextureLoader, background);
 
   return (
     <mesh onDoubleClick={onDoubleClick}>
