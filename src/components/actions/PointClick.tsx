@@ -1,9 +1,10 @@
 import * as THREE from 'three';
-import { ThreeEvent } from '@react-three/fiber';
+import { Tooltip } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
+import { ThreeEvent } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
 import { LoginOutlined } from '@ant-design/icons';
-import { Tooltip } from 'antd';
+
 import { StyledPoint } from '@/style';
 
 // Định kiểu cho SetCircles

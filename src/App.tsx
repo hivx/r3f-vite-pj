@@ -1,9 +1,11 @@
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
-import { Global } from './style';
+
+import { Global } from '@/style';
 import { Controls } from '@/components';
 import { AppRoutes } from '@/routes';
-import { BrowserRouter as Router } from 'react-router-dom';
+
 
 const App: React.FC = () => {
   return (

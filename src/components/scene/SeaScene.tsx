@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import * as THREE from 'three';
+import { useNavigate } from 'react-router-dom';
+import { Tooltip } from 'antd';
+import { LoginOutlined } from '@ant-design/icons';
+import { Html } from '@react-three/drei';
+
 import { Imgloader } from '@/components';
 import { handleDoubleClick } from '@/components/actions';
 import { sea } from '@/assets';
-import { Html } from '@react-three/drei';
-import { Tooltip } from 'antd';
 import { StyledPoint } from '@/style';
-import { LoginOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
 
 export const SeaScene: React.FC = () => {
   const [circles, setCircles] = useState<JSX.Element[]>([]);
@@ -31,11 +32,21 @@ export const SeaScene: React.FC = () => {
           </StyledPoint>
         </Tooltip>
       </Html>
-      <Html position={new THREE.Vector3(-247.75351422131138, 37.40, 432.51)}>
+      <Html position={new THREE.Vector3(-247.75, 37.40, 432.51)}>
         <Tooltip title="Road">
           <StyledPoint
             style={{color: 'rgb(46, 60, 61, 1)'}}
             onClick={() => {handleroute('/scene4')}}
+          >
+            <LoginOutlined />
+          </StyledPoint>
+        </Tooltip>
+      </Html>
+      <Html position={new THREE.Vector3(480.48, 17.19, 133.43)}>
+        <Tooltip title="Island">
+          <StyledPoint
+            style={{color: 'rgb(46, 133, 52, 1)'}}
+            onClick={() => {handleroute('/scene2')}}
           >
             <LoginOutlined />
           </StyledPoint>
