@@ -26,7 +26,7 @@ const createLoginIcon = (
 
   return (
     <Html position={point} key={key}>
-      <Tooltip title="Transittion BG">
+      <Tooltip title="New Scene">
         <StyledPoint 
           onClick={handleClick}
           onContextMenu={handleContextMenu}

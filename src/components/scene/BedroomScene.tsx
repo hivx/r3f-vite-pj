@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import * as THREE from 'three';
-import { Dome } from '@/components';
-import { handleDoubleClick } from '@/components';
-import { oldroom } from '@/assets';
+import { Imgloader } from '@/components';
+import { handleDoubleClick } from '@/components/actions';
+import { bedroom } from '@/assets';
 import { Html } from '@react-three/drei';
 import { Tooltip } from 'antd';
 import { StyledPoint } from '@/style';
 import { LoginOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
-export const Scene1: React.FC = () => {
+export const BedroomScene: React.FC = () => {
   const [circles, setCircles] = useState<JSX.Element[]>([]);
 
   const navigate = useNavigate();
@@ -20,12 +20,12 @@ export const Scene1: React.FC = () => {
 
   return (
     <>
-      <Dome onDoubleClick={(event) => handleDoubleClick(event, setCircles)} background={oldroom} />
-      <Html position={new THREE.Vector3(467.81, 39.34, -171.92)}>
-        <Tooltip title="Transition BG">
+      <Imgloader onDoubleClick={(event) => handleDoubleClick(event, setCircles)} background={bedroom} />
+      <Html position={new THREE.Vector3(-307.45, -68.54, -387.10)}>
+        <Tooltip title="Oldroom">
           <StyledPoint
-            style={{color: 'rgb(46, 133, 52, 1)'}}
-            onClick={() => {handleroute('/scene2')}}
+            style={{color: 'rgb(212, 137, 72, 1)'}}
+            onClick={() => {handleroute('/scene1')}}
           >
             <LoginOutlined />
           </StyledPoint>

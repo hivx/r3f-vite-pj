@@ -1,15 +1,13 @@
-// import * as THREE from 'three'
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Global } from './style';
 import { Controls } from '@/components';
-import {Scene1} from '@/components';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import {Scene2} from '@/components';
+import { AppRoutes } from '@/routes';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const App: React.FC = () => {
   return (
-    <>
+    <Router>
       <Global />
       <Canvas>
         <Controls
@@ -21,16 +19,10 @@ const App: React.FC = () => {
           rotateSpeed={-0.5}
         />
         <Suspense fallback={null}>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Scene1 />} />
-              <Route path="/scene1" element={<Scene1 />} />
-              <Route path="/scene2" element={<Scene2 />} />
-            </Routes>
-          </Router>
+          <AppRoutes />
         </Suspense>
       </Canvas>
-    </>
+    </Router>
   );
 };
 

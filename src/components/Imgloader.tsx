@@ -6,7 +6,7 @@ type DomeProps = {
   background: string;
 };
 
-export const Dome: React.FC<DomeProps> = ({ onDoubleClick, background }) => {
+export const Imgloader: React.FC<DomeProps> = ({ onDoubleClick, background }) => {
   const texture = useLoader(THREE.TextureLoader, background);
 
   return (

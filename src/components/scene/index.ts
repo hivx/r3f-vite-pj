@@ -1,2 +1,5 @@
-export * from './Scene1';
-export * from './Scene2';
+export * from './OldroomScene';
+export * from './IslandScene';
+export * from './BedroomScene';
+export * from './RoadScene';
+export * from './SeaScene';
