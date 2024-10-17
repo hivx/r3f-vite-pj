@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Html } from '@react-three/drei';
 import { LoginOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
-import { StyledPoint } from '../../style';
+import { StyledPoint } from '@/style';
 
 // Định kiểu cho SetCircles
 type SetCirclesType = React.Dispatch<React.SetStateAction<JSX.Element[]>>;

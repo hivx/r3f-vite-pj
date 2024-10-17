@@ -11,7 +11,7 @@ interface ControlsProps {
     rotateSpeed?: number;
 }
   
-const Controls: React.FC<ControlsProps> = ({
+export const Controls: React.FC<ControlsProps> = ({
     enableZoom = true,
     enablePan = true,
     enableDamping = true,
@@ -49,4 +49,3 @@ const Controls: React.FC<ControlsProps> = ({
     return null;
 };
 
-export default Controls;

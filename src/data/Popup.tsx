@@ -8,7 +8,7 @@ const data = [
   'Man charged over missing wedding girl.',
   'Los Angeles battles huge wildfires.',
 ];
-const Popup = () => (
+export const Popup = () => (
   <>
     <Divider orientation="left">Test Data</Divider>
     <List
@@ -21,4 +21,4 @@ const Popup = () => (
     />
   </>
 );
-export default Popup;
+

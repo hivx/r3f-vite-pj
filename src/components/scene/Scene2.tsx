@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import * as THREE from 'three';
-import { Dome } from '../Imgloader';
-import { handleDoubleClick } from '../actions/PointClick';
+import { Dome } from '@/components';
+import { handleDoubleClick } from '@/components';
 import { island } from '@/assets';
 import { Html } from '@react-three/drei';
 import { Tooltip } from 'antd';
-import { StyledPoint } from '../../style';
+import { StyledPoint } from '@/style';
 import { LoginOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
