@@ -3,9 +3,9 @@ import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Global } from './style';
 import Controls from './components/Controls';
-import Scene1 from './components/Scene1';
+import {Scene1} from './components';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import Scene2 from './components/Scene2';
+import {Scene2} from './components';
 
 const App: React.FC = () => {
   return (

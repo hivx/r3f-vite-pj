@@ -1,30 +1,31 @@
 import { useState } from 'react';
 import * as THREE from 'three';
-import Dome from './Imgloader';
-import handleDoubleClick from './actions/PointClick';
-import { oldroom } from '../assets';
+import { Dome } from '../Imgloader';
+import { handleDoubleClick } from '../actions/PointClick';
+import { island } from '@/assets';
 import { Html } from '@react-three/drei';
 import { Tooltip } from 'antd';
-import { StyledPoint } from '../style';
+import { StyledPoint } from '../../style';
 import { LoginOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
-const Scene: React.FC = () => {
+export const Scene2: React.FC = () => {
   const [circles, setCircles] = useState<JSX.Element[]>([]);
 
   const navigate = useNavigate();
 
-  const handleroute = () => {
-    navigate('/scene2');
+  const handleroute = (event: string) => {
+    navigate(event);
   };
 
   return (
     <>
-      <Dome onDoubleClick={(event) => handleDoubleClick(event, setCircles)} background={oldroom} />
-      <Html position={new THREE.Vector3(496.4, 2.1, -57.17)}>
+      <Dome onDoubleClick={(event) => handleDoubleClick(event, setCircles)} background={island} />
+      <Html position={new THREE.Vector3(295.51, -26.11, -401.88)}>
         <Tooltip title="Transition BG">
           <StyledPoint
-            onClick={handleroute}
+            style={{ color: 'rgb(212, 137, 72, 1)'}}
+            onClick={() => {handleroute('/scene1')}}
           >
             <LoginOutlined />
           </StyledPoint>
@@ -35,4 +36,3 @@ const Scene: React.FC = () => {
   );
 };
 
-export default Scene;

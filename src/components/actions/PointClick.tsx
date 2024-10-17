@@ -39,7 +39,7 @@ const createLoginIcon = (
 };
 
 // Hàm xử lý sự kiện double-click
-const handleDoubleClick = (
+export const handleDoubleClick = (
   event: ThreeEvent<MouseEvent>,
   setCircles: SetCirclesType
 ): void => {
@@ -59,4 +59,3 @@ const handleDoubleClick = (
   setCircles(prevCircles => [...prevCircles, newIcon]);
 };
 
-export default handleDoubleClick;
