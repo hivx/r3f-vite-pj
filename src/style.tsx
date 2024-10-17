@@ -47,7 +47,7 @@ export const Global = createGlobalStyle`
 
 export const StyledPoint = styled.div`
   cursor: pointer;
-  font-size: 30px;
+  font-size: 50px;
   color: rgb(25, 2, 241, 1);
   transition: transform 0.2s ease;
 
