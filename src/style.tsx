@@ -1,4 +1,7 @@
+import { Layout, Modal } from "antd";
 import styled, { createGlobalStyle } from "styled-components";
+
+const { Header, Content } = Layout;
 
 export const Global = createGlobalStyle`
     /* Reset box-sizing cho tất cả các phần tử */
@@ -54,4 +57,36 @@ export const StyledPoint = styled.div`
   &:hover {
     transform: scale(1.5);
   }
+`;
+
+export const StyledLayoutPopup = styled(Layout)`
+  height: 100%;
+`;
+
+export const StyledHeader = styled(Header)`
+  text-align: center;
+  color: #fff;
+  background-color: #4096ff;
+  border-radius: 6px;
+  font-size: 24px;
+`;
+
+export const StyledContent = styled(Content)`
+  padding: 5px;
+  background-color: #fff;
+`;
+
+export const StyledModal = styled(Modal)`
+  .ant-modal-body {
+    padding: 10px;
+    border-radius: 6px;
+  }
+  .ant-modal-footer {
+    display: flex;
+    justify-content: right;
+  }
+`;
+export const StyledMedia = styled.div`
+  padding: '5px';
+  textAlign: 'center';
 `;

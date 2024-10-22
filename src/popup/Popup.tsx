@@ -1,9 +1,8 @@
 import React from 'react';
-import { Modal } from 'antd';
 import { Html } from '@react-three/drei';
+import { StyledModal } from '@/style';
 
 interface PopupProps {
-  title: string;
   open: boolean;
   onOk: () => void;
   onCancel: () => void;
@@ -11,7 +10,6 @@ interface PopupProps {
 }
 
 export const Popup: React.FC<PopupProps> = ({
-  title,
   open,
   onOk,
   onCancel,
@@ -19,14 +17,16 @@ export const Popup: React.FC<PopupProps> = ({
 }) => {
   return (
     <Html>
-      <Modal
-        title={title}
+      <StyledModal
         open={open}
         onOk={onOk}
         onCancel={onCancel}
+        width={1000}
+        height={1000}
+        closable={false}
       >
         {children}
-      </Modal>
+      </StyledModal>
     </Html>
   );
 };

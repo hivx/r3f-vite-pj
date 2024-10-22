@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as THREE from 'three';
-import { Tooltip } from 'antd';
+import { Col, Row, Tooltip } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { LeftCircleTwoTone, RightCircleTwoTone, UpCircleTwoTone } from '@ant-design/icons';
 import { Html } from '@react-three/drei';
@@ -8,7 +8,7 @@ import { Html } from '@react-three/drei';
 import { Imgloader } from '@/components';
 import { handleDoubleClick } from '@/components/actions';
 import { oldroom, hiho, video, sound } from '@/assets';
-import { StyledPoint } from '@/style';
+import { StyledContent, StyledHeader, StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
 import { Popup } from '@/popup';
 
 export const OldroomScene: React.FC = () => {
@@ -24,16 +24,39 @@ export const OldroomScene: React.FC = () => {
   };
 
   const OldroomInfo = (
-    <>
-      <p> Nội dung của bức ảnh này là OldroomInfo </p>
-      <img src={hiho} alt="Sample Image" style={{ width: '100%' }} />
-      <video controls style={{ width: '100%' }}>
-        <source src={video} type="video/mp4" />
-      </video>
-      <audio controls>
-        <source src={sound} type="audio/mpeg" />
-      </audio>
-    </>
+    <StyledLayoutPopup>
+      <StyledHeader>
+        Thông tin chi tiết
+      </StyledHeader> 
+      <StyledContent>
+        <Row gutter={[10, 10]} justify="center">
+          <Col span={12}>
+            <StyledMedia>
+              <img src={hiho} alt="image1" style={{ width: '100%', height: '100%' }} />
+            </StyledMedia>
+          </Col>
+          <Col span={12}>
+            <StyledMedia>
+              <video controls style={{ width: '100%', height: '100%' }}>
+                <source src={video} type="video/mp4" />
+              </video>
+            </StyledMedia>
+          </Col>
+          <Col span={24}>
+            <StyledMedia>
+              <audio controls  style={{ width: '100%' }}>
+                <source src={sound} type="audio/mpeg" />
+              </audio>
+            </StyledMedia>
+          </Col>
+          <Col span={24}>
+            <StyledMedia>
+              Mô tả của trang này là hình ảnh local, video ant demo, sound demo.
+            </StyledMedia>
+          </Col>
+        </Row>
+      </StyledContent>
+    </StyledLayoutPopup>
   );
 
   const navigate = useNavigate();
@@ -46,42 +69,41 @@ export const OldroomScene: React.FC = () => {
     <>
       <Imgloader onDoubleClick={(event) => handleDoubleClick(event, setCircles, setIsOpen)} background={oldroom} />
 
-      <Html position={new THREE.Vector3(467.81, 39.34, -171.92)}>
-        <Tooltip title="Island">
-          <StyledPoint
-            style={{ color: 'rgb(46, 133, 52, 1)' }}
-            onClick={() => {handleroute('/scene2')}}
-          >
-            <RightCircleTwoTone />
-          </StyledPoint>
-        </Tooltip>
-      </Html>
+      {!isOpen &&
+        <>
+          <Html position={new THREE.Vector3(467.81, 39.34, -171.92)}>
+            <Tooltip title="Island">
+              <StyledPoint
+                onClick={() => { handleroute('/scene2'); } }
+              >
+                <RightCircleTwoTone />
+              </StyledPoint>
+            </Tooltip>
+          </Html>
+          <Html position={new THREE.Vector3(270.86, -26.30, -410.45)}>
+            <Tooltip title="Bedroom">
+              <StyledPoint
+                onClick={() => { handleroute('/scene3'); } }
+              >
+                <LeftCircleTwoTone />
+              </StyledPoint>
+            </Tooltip>
+          </Html>
+          <Html position={new THREE.Vector3(-100.52, 0, 486.85)}>
+            <Tooltip title="Road">
+              <StyledPoint
+                onClick={() => { handleroute('/scene4'); } }
+              >
+                <UpCircleTwoTone />
+              </StyledPoint>
+            </Tooltip>
+          </Html>
+        </>
+      }
 
-      <Html position={new THREE.Vector3(270.86, -26.30, -410.45)}>
-        <Tooltip title="Bedroom">
-          <StyledPoint
-            style={{color: 'rgb(220, 167, 34, 1)'}}
-            onClick={() => {handleroute('/scene3')}}
-          >
-            <LeftCircleTwoTone />
-          </StyledPoint>
-        </Tooltip>
-      </Html>
+      {!isOpen && circles }
 
-      <Html position={new THREE.Vector3(-100.52, 0, 486.85)}>
-        <Tooltip title="Road">
-          <StyledPoint
-            style={{color: 'rgb(46, 60, 61, 1)'}}
-            onClick={() => {handleroute('/scene4')}}
-          >
-            <UpCircleTwoTone />
-          </StyledPoint>
-        </Tooltip>
-      </Html>
-
-      {circles}
-      {isOpen && <Popup 
-        title="Thông tin chi tiết"
+      {isOpen && <Popup
         open={isOpen}
         onOk={handleOK}
         onCancel={handleCancel}

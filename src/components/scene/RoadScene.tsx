@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import * as THREE from 'three';
 import { useNavigate } from 'react-router-dom';
-import { Tooltip } from 'antd';
+import { Col, Row, Tooltip } from 'antd';
 import { Html } from '@react-three/drei';
 import { DownCircleTwoTone, LeftCircleTwoTone } from '@ant-design/icons';
 
 import { Imgloader } from '@/components';
 import { handleDoubleClick } from '@/components/actions';
 import { qiqi, road, sound, video } from '@/assets';
-import { StyledPoint } from '@/style';
+import { StyledContent, StyledHeader, StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
 import { Popup } from '@/popup';
 
 export const RoadScene: React.FC = () => {
@@ -24,16 +24,39 @@ export const RoadScene: React.FC = () => {
   };
 
   const RoadInfo = (
-    <>
-      <p> Nội dung của bức ảnh này là RoadInfo </p>
-      <img src={qiqi} alt="Sample Image" style={{ width: '100%' }} />
-      <video controls style={{ width: '100%' }}>
-        <source src={video} type="video/mp4" />
-      </video>
-      <audio controls>
-        <source src={sound} type="audio/mpeg" />
-      </audio>
-    </>
+    <StyledLayoutPopup>
+      <StyledHeader>
+        Thông tin chi tiết
+      </StyledHeader> 
+      <StyledContent>
+        <Row gutter={[10, 10]} justify="center">
+          <Col span={12}>
+            <StyledMedia>
+              <img src={qiqi} alt="image1" style={{ width: '100%', height: '258px' }} />
+            </StyledMedia>
+          </Col>
+          <Col span={12}>
+            <StyledMedia>
+              <video controls style={{ width: '100%', height: '100%' }}>
+                <source src={video} type="video/mp4" />
+              </video>
+            </StyledMedia>
+          </Col>
+          <Col span={24}>
+            <StyledMedia>
+              <audio controls  style={{ width: '100%' }}>
+                <source src={sound} type="audio/mpeg" />
+              </audio>
+            </StyledMedia>
+          </Col>
+          <Col span={24}>
+            <StyledMedia>
+              Mô tả của trang này là hình ảnh local, video ant demo, sound demo.
+            </StyledMedia>
+          </Col>
+        </Row>
+      </StyledContent>
+    </StyledLayoutPopup>
   );
 
   const navigate = useNavigate();
@@ -46,31 +69,32 @@ export const RoadScene: React.FC = () => {
     <>
       <Imgloader onDoubleClick={(event) => handleDoubleClick(event, setCircles, setIsOpen)} background={road} />
 
-      <Html position={new THREE.Vector3(155.33, -140.13, 453.09)}>
-        <Tooltip title="Oldroom">
-          <StyledPoint
-            style={{color: 'rgb(212, 137, 72, 1)'}}
-            onClick={() => {handleroute('/scene1')}}
-          >
-            <DownCircleTwoTone />
-          </StyledPoint>
-        </Tooltip>
-      </Html>
+      {!isOpen &&
+      <>
+        <Html position={new THREE.Vector3(155.33, -140.13, 453.09)}>
+          <Tooltip title="Oldroom">
+            <StyledPoint
+              onClick={() => {handleroute('/scene1')}}
+            >
+              <DownCircleTwoTone />
+            </StyledPoint>
+          </Tooltip>
+        </Html>
+        <Html position={new THREE.Vector3(-360.41, 10.89, 295.74)}>
+          <Tooltip title="Island">
+            <StyledPoint
+              onClick={() => {handleroute('/scene2')}}
+            >
+              <LeftCircleTwoTone />
+            </StyledPoint>
+          </Tooltip>
+        </Html>
+      </>
+      }
 
-      <Html position={new THREE.Vector3(-360.41, 10.89, 295.74)}>
-        <Tooltip title="Island">
-          <StyledPoint
-            style={{color: 'rgb(46, 133, 52, 1)'}}
-            onClick={() => {handleroute('/scene2')}}
-          >
-            <LeftCircleTwoTone />
-          </StyledPoint>
-        </Tooltip>
-      </Html>
+      {!isOpen && circles}
 
-      {circles}
       {isOpen && <Popup 
-        title="Thông tin chi tiết"
         open={isOpen}
         onOk={handleOK}
         onCancel={handleCancel}

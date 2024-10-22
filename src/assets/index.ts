@@ -13,3 +13,6 @@ export { default as hiho } from '@/assets/hiho.png';
 
 export { default as sound } from '@/assets/sound_demo.mp3';
 export { default as video } from '@/assets/vid_demo.mp4';
+
+// export { default as test } from 'public/TOF.png';
+
