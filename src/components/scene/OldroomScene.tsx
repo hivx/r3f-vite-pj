@@ -27,7 +27,7 @@ export const OldroomScene: React.FC = () => {
     <StyledLayoutPopup>
       <StyledHeader>
         Thông tin chi tiết
-      </StyledHeader> 
+      </StyledHeader>
       <StyledContent>
         <Row gutter={[10, 10]} justify="center">
           <Col span={12}>
@@ -39,6 +39,7 @@ export const OldroomScene: React.FC = () => {
             <StyledMedia>
               <video controls style={{ width: '100%', height: '100%' }}>
                 <source src={video} type="video/mp4" />
+                <track kind="captions" srcLang="en" label="English" />
               </video>
             </StyledMedia>
           </Col>
@@ -46,6 +47,7 @@ export const OldroomScene: React.FC = () => {
             <StyledMedia>
               <audio controls  style={{ width: '100%' }}>
                 <source src={sound} type="audio/mpeg" />
+                <track kind="captions" srcLang="en" label="English" />
               </audio>
             </StyledMedia>
           </Col>
@@ -67,6 +69,7 @@ export const OldroomScene: React.FC = () => {
 
   return (
     <>
+
       <Imgloader onDoubleClick={(event) => handleDoubleClick(event, setCircles, setIsOpen)} background={oldroom} />
 
       {!isOpen &&

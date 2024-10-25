@@ -10,10 +10,11 @@ export const Imgloader: React.FC<DomeProps> = ({ onDoubleClick, background }) =>
   const texture = useLoader(THREE.TextureLoader, background);
 
   return (
+    
     <mesh onDoubleClick={onDoubleClick}>
-      <sphereGeometry args={[500, 60, 40]} />
-      <meshBasicMaterial map={texture} side={THREE.BackSide} />
+        <sphereGeometry args={[500, 60, 40]} />
+        <meshBasicMaterial side={THREE.BackSide} map={texture} />
     </mesh>
-  );
+);
 };
 

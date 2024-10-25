@@ -39,6 +39,7 @@ export const RoadScene: React.FC = () => {
             <StyledMedia>
               <video controls style={{ width: '100%', height: '100%' }}>
                 <source src={video} type="video/mp4" />
+                <track kind="captions" srcLang="en" label="English" />
               </video>
             </StyledMedia>
           </Col>
@@ -46,6 +47,7 @@ export const RoadScene: React.FC = () => {
             <StyledMedia>
               <audio controls  style={{ width: '100%' }}>
                 <source src={sound} type="audio/mpeg" />
+                <track kind="captions" srcLang="en" label="English" />
               </audio>
             </StyledMedia>
           </Col>

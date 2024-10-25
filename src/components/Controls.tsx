@@ -1,51 +1,59 @@
-import React, { useRef, useEffect } from 'react';
-import { useThree, useFrame } from '@react-three/fiber';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import React, { Suspense, useState, useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 
-interface ControlsProps {
-    enableZoom?: boolean;
-    enableDamping?: boolean;
-    enablePan?: boolean;
-    dampingFactor?: number;
-    autoRotate?: boolean;
-    rotateSpeed?: number;
-}
-  
-export const Controls: React.FC<ControlsProps> = ({
-    enableZoom = true,
-    enablePan = true,
-    enableDamping = true,
-    dampingFactor = 0.2,
-    autoRotate = true,
-    rotateSpeed = -0.5,
-    }) => {
-    const { camera, gl } = useThree();
-    const controls = useRef<OrbitControls | null>(null);
+import { Global } from '@/style';
+import { AppRoutes } from '@/routes';
+
+export const Controls: React.FC = () => {
+    const isRoom = true;
+    const [fov, setFov] = useState<number>(50);
+    const [isRotate, setIsRotate] = useState<boolean>(true);
 
     useEffect(() => {
-        controls.current = new OrbitControls(camera, gl.domElement);
-        controls.current.enableZoom = enableZoom;
-        controls.current.enablePan = enablePan;
-        controls.current.enableDamping = enableDamping;
-        controls.current.dampingFactor = dampingFactor;
-        controls.current.autoRotate = autoRotate;
-        controls.current.rotateSpeed = rotateSpeed;
-
-        return () => {
-        controls.current?.dispose();
-        controls.current = null;
+        const handleWheel = (event: WheelEvent) => {
+            if (isRoom) {
+                const fovChange = event.deltaY > 0 ? 1 : -1;
+                setFov((prevFov) => {
+                    const newFov = prevFov + fovChange;
+                    return Math.max(15, Math.min(100, newFov));
+                });
+            }
         };
-    }, [autoRotate, camera, dampingFactor, enableDamping, enablePan, enableZoom, gl, rotateSpeed]);
+    
+        window.addEventListener('wheel', handleWheel);
+        return () => {
+            window.removeEventListener('wheel', handleWheel);
+        };
+    }, [isRoom]);
+    
+    const handleRotate = () => {
+        setIsRotate(false);
+        // setIsRotate(prev => !prev);
+    };
 
-    useFrame((_, delta) => {
-        const speedMultiplier = 50;
-        controls.current?.update();
-
-        if (controls.current) {
-        controls.current.rotateSpeed = rotateSpeed * speedMultiplier * delta;
-        }
-    });
-
-    return null;
+    return (
+        <Router>
+            <Global />
+            <Canvas onClick={handleRotate}>
+                <PerspectiveCamera 
+                    makeDefault
+                    position={[0, 0, 100]}
+                    fov={fov}
+                />
+                <OrbitControls
+                    enableZoom={false}
+                    enablePan={true}
+                    enableDamping={true}
+                    dampingFactor={0.5}
+                    autoRotate={isRotate}
+                    rotateSpeed={-0.5}
+                />
+                <Suspense fallback={null}>
+                    <AppRoutes />
+                </Suspense>
+            </Canvas>
+        </Router>
+    );
 };
-
