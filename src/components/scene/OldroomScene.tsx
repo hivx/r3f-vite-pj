@@ -7,7 +7,7 @@ import { Html } from '@react-three/drei';
 
 import { Imgloader } from '@/components';
 import { handleDoubleClick } from '@/components/actions';
-import { oldroom, hiho, video, sound } from '@/assets';
+import { oldroom, hiho, video, sound } from 'public/assets';
 import { StyledContent, StyledHeader, StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
 import { Popup } from '@/popup';
 
@@ -69,7 +69,6 @@ export const OldroomScene: React.FC = () => {
 
   return (
     <>
-
       <Imgloader onDoubleClick={(event) => handleDoubleClick(event, setCircles, setIsOpen)} background={oldroom} />
 
       {!isOpen &&

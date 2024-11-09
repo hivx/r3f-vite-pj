@@ -8,7 +8,7 @@ import { RightCircleTwoTone } from '@ant-design/icons';
 import { StyledContent, StyledHeader, StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
 import { Imgloader } from '@/components';
 import { handleDoubleClick } from '@/components/actions';
-import { bedroom, cat2, sound, video } from '@/assets';
+import { bedroom, cat2, sound, video } from 'public/assets';
 import { Popup } from '@/popup';
 
 export const BedroomScene: React.FC = () => {

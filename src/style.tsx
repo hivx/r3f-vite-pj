@@ -40,7 +40,6 @@ export const Global = createGlobalStyle`
     overflow: hidden;
     }
 
-
     body {
     overscroll-behavior-y: none;
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif; /* Font chữ */
@@ -86,7 +85,32 @@ export const StyledModal = styled(Modal)`
     justify-content: right;
   }
 `;
+
 export const StyledMedia = styled.div`
   padding: '5px';
   textAlign: 'center';
+`;
+
+export const StyledWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const StyledSpinner = styled.div`
+  border: 8px solid #f3f3f3; /* Màu nền */
+  border-top: 8px solid #3498db; /* Màu của vòng xoay */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 `;

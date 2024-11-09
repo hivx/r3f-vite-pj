@@ -7,7 +7,7 @@ import { LeftCircleTwoTone, RightCircleTwoTone } from '@ant-design/icons';
 
 import { Imgloader } from '@/components';
 import { handleDoubleClick } from '@/components/actions';
-import { cat1, island, sound, video } from '@/assets';
+import { cat1, island, sound, video } from 'public/assets';
 import { StyledContent, StyledHeader, StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
 import { Popup } from '@/popup';
 

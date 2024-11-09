@@ -1,9 +1,18 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
-  }
+  "scenes": [
+    {
+      "id": 1,
+      "name": "Oldroom",
+      "background": "/assets/oldroom.jpg",
+      "image": "/assets/hiho.png",
+      "video": "/assets/vid_demo.mp4",
+      "audio": "/assets/sound_demo.mp3",
+      "description": "Mô tả của trang này là hình ảnh local, video ant demo, sound demo.",
+      "tooltipPositions": [
+        { "id": 1, "title": "Island", "route": "/scene2", "position": [467.81, 39.34, -171.92] },
+        { "id": 2, "title": "Bedroom", "route": "/scene3", "position": [270.86, -26.30, -410.45] },
+        { "id": 3, "title": "Road", "route": "/scene4", "position": [-100.52, 0, 486.85] }
+      ]
+    }
+  ]
+}

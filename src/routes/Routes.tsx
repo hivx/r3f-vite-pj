@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { OldroomScene, IslandScene, BedroomScene, RoadScene, SeaScene } from '@/components';
+import { OldroomScene, IslandScene, BedroomScene, RoadScene, SeaScene, TestScene } from '@/components';
 
 
 export const AppRoutes: React.FC = () => {
@@ -11,6 +11,7 @@ export const AppRoutes: React.FC = () => {
       <Route path="/scene3" element={<BedroomScene />} />
       <Route path="/scene4" element={<RoadScene />} />
       <Route path="/scene5" element={<SeaScene />} />
+      <Route path='/testscene' element={<TestScene />}/>
     </Routes>
   );
 };
