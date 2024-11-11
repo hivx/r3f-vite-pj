@@ -6,12 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { LeftCircleTwoTone, RightCircleTwoTone, UpCircleTwoTone } from '@ant-design/icons';
 import { Html } from '@react-three/drei';
 
-import { Imgloader } from '@/components';
+import { Imgloader, LoadingScene } from '@/components';
 import { handleDoubleClick } from '@/components/actions';
 import { StyledContent, StyledHeader, StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
 import { Popup } from '@/popup';
-import { LoadingScene } from '@/components';
-import { sea } from 'public/assets';
+
 
 type TooltipPosition = {
   id: number;

@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { OldroomScene, IslandScene, BedroomScene, RoadScene, SeaScene, TestScene } from '@/components';
-
+// import { TestLoader } from '@/components/resolution';
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ export const AppRoutes: React.FC = () => {
       <Route path="/scene3" element={<BedroomScene />} />
       <Route path="/scene4" element={<RoadScene />} />
       <Route path="/scene5" element={<SeaScene />} />
-      <Route path='/testscene' element={<TestScene />}/>
+      <Route path='/testscene' element={<TestScene />} />
     </Routes>
   );
 };
