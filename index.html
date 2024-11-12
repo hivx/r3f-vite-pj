@@ -5,33 +5,9 @@
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>React Three Fiber</title>
-    <style type="text/css">
-      body, html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-      }
-    
-      #group {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100vw;
-        height: 100vh;
-        justify-items: center;
-      }
-    
-      .pano {
-        width: 50vw;
-        background-color: rgb(255, 255, 255);
-      }
-    </style>
-    
   </head>
   <body>
-    <div id="group">
-      <div class="pano" id="pano1"></div>
-      <div class="pano" id="panotest"></div>
-    </div>
-    <script type="text/javascript" src="/src/components/resolution/build/main.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
