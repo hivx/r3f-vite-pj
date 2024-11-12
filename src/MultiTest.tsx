@@ -2,53 +2,37 @@ import React, { useEffect } from 'react';
 import { Avansel } from '@/components/resolution/build/avansel';
 
 type TilesMatrix = {
-    s: number;
-    l: number;
-    x: number;
-    y: number;
-}
+  s: string;
+  l: string;
+  x: string;
+  y: string;
+};
 
 export const MultiTest: React.FC = () => {
-  console.log("multi-test");
-
   useEffect(() => {
-    const panoElement = document.getElementById('panotest');
+    const panoElement = document.getElementById('pano3');
 
     if (panoElement) {
       new Avansel(panoElement)
         .multires(
-            [
-              { tileSize: 512, size: 512 * 2 ** 0, fallback: true },
-              { tileSize: 512, size: 512 * 2 ** 1 },
-              { tileSize: 512, size: 512 * 2 ** 2 },
-              { tileSize: 512, size: 512 * 2 ** 3 },
-              { tileSize: 512, size: 512 * 2 ** 4 },
-              { tileSize: 512, size: 512 * 2 ** 5 },
-              { tileSize: 512, size: 512 * 2 ** 6 },
-              { tileSize: 512, size: 512 * 2 ** 7 },
-              { tileSize: 512, size: 512 * 2 ** 8 },
-              { tileSize: 512, size: 512 * 2 ** 9 },
-              { tileSize: 512, size: 512 * 2 ** 10 },
-              { tileSize: 512, size: 512 * 2 ** 11 },
-              { tileSize: 512, size: 512 * 2 ** 12 },
-              { tileSize: 512, size: 512 * 2 ** 13 },
-              { tileSize: 512, size: 512 * 2 ** 14 },
-              { tileSize: 512, size: 512 * 2 ** 15 },
-            ],
-          () => ({ s, l, x, y }: TilesMatrix) => `https://dev-api.trvi.tours/tile?size=512&total=1024&side=${s}&x=${x}&y=${y}&level=${l}`
+          [
+            { tileSize: 476, size: 476, fallback: true },
+            { tileSize: 512, size: 952 },
+          ],
+          (tile: TilesMatrix) => {
+            const { s, l, x, y } = tile;
+            const level = parseInt(l) + 1; // tăng cấp độ
+            return `/src/assets/multires-1/${level}/${s}${y}_${x}.jpg`; // trả về URL của tile
+          }
         )
         .start();
 
-      // Thêm sự kiện double-click
+      // Thêm sự kiện listener
       panoElement.addEventListener('dblclick', (event) => {
-        console.log('Screen double-clicked', event);
+        console.log('Double-click', event);
       });
-      //   panoElement.addEventListener('click', (event) => {
-      //     console.log('Screen clicked', event);
-      //   });
     }
   }, []);
-  
-  return <div id="panotest" style={{ width: '100vw', height: '100vh' }} />;
 
-};  
+  return <div id="pano3" style={{ width: '100vw', height: '100vh' }} />;
+};

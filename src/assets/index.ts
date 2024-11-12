@@ -3,6 +3,8 @@ export { default as sea } from '@/assets/sea.jpeg';
 export { default as bedroom } from '@/assets/bedroom.jpg';
 export { default as road } from '@/assets/road.jpg';
 export { default as island } from '@/assets/island.jpg';
+export { default as mountain } from '@/assets/pano.jpg';
+export { default as park } from '@/assets/park.jpg';
 
 export { default as cat1 } from '@/assets/image1.jpg';
 export { default as cat2 } from '@/assets/image3.jpg';
