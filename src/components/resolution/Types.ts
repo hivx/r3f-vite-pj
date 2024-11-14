@@ -4,6 +4,11 @@ export declare interface CameraPosition {
     fov: number;
 }
 
-export type AbortFunction = {
-    abort: () => void;
-}
+export type DataProps = {
+    width: number;
+    height: number;
+    offsetX: number;
+    offsetY: number;
+    x: number;
+    y: number;
+};
