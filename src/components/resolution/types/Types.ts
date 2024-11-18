@@ -7,8 +7,6 @@ export declare interface CameraPosition {
 export type DataProps = {
     width: number;
     height: number;
-    offsetX: number;
-    offsetY: number;
     x: number;
     y: number;
 };

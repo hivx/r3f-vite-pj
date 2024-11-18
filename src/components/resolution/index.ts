@@ -1,3 +1,3 @@
 export * from './side';
-export * from './Types';
-// export * from './Multires';
+export * from './types';
+export * from './Multires';

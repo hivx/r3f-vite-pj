@@ -8,7 +8,8 @@ import { Html } from '@react-three/drei';
 import { Imgloader } from '@/components';
 import { handleDoubleClick } from '@/components/actions';
 import { tof, sea, sound, video } from '@/assets';
-import { StyledContent, StyledHeader, StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
+import { StyledContent, StyledHeader, 
+  StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
 import { Popup } from '@/popup';
 
 export const SeaScene: React.FC = () => {

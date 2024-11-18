@@ -8,7 +8,8 @@ import { Html } from '@react-three/drei';
 
 import { Imgloader, LoadingScene } from '@/components';
 import { handleDoubleClick } from '@/components/actions';
-import { StyledContent, StyledHeader, StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
+import { StyledContent, StyledHeader, 
+  StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
 import { Popup } from '@/popup';
 
 

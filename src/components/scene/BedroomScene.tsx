@@ -5,7 +5,8 @@ import { Col, Row, Tooltip } from 'antd';
 import { Html } from '@react-three/drei';
 import { RightCircleTwoTone } from '@ant-design/icons';
 
-import { StyledContent, StyledHeader, StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
+import { StyledContent, StyledHeader, StyledLayoutPopup, 
+  StyledMedia, StyledPoint } from '@/style';
 import { Imgloader } from '@/components';
 import { handleDoubleClick } from '@/components/actions';
 import { bedroom, cat2, sound, video } from '@/assets';

@@ -8,7 +8,8 @@ import { DownCircleTwoTone, LeftCircleTwoTone } from '@ant-design/icons';
 import { Imgloader } from '@/components';
 import { handleDoubleClick } from '@/components/actions';
 import { qiqi, road, sound, video } from '@/assets';
-import { StyledContent, StyledHeader, StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
+import { StyledContent, StyledHeader, 
+  StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
 import { Popup } from '@/popup';
 
 export const RoadScene: React.FC = () => {

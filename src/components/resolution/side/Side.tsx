@@ -1,9 +1,7 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { v4 as uuidv4 } from 'uuid';
-import { CreateTile } from '@/components/resolution';
-import { pano } from '@/components/resolution/config.json';
-import { DataProps } from '@/components/resolution/Types';
+import { CreateTile, DataProps } from '@/components/resolution';
+import { pano } from '@/components/resolution/types/config.json';
 import * as THREE from 'three';
 
 type SideProps = {
@@ -42,20 +40,19 @@ const sideRotation = (side: string) => {
 
 export const Side: React.FC<SideProps> = ({ side, level, tiles, source, meshes }) => {
     const groupRef = useRef<THREE.Group>(null);
-
-    const url = typeof source === 'function' ? source(side, level, tiles[0].x, tiles[0].y) : source;
-    console.log(url);
-
     const position = sidePosition(side, level);
     const rotation = sideRotation(side);
 
     const tileMeshes = useMemo(() => {
+        // Tạo url một lần
         return tiles.map((data) => {
-            const name = `${level}-${side}-${data.x}-${data.y}`;
-            const key = uuidv4();
+            const name = `${side}-${level}x${data.x}x${data.y}`;
+            const url = typeof source === 'function' ? source(side, level, data.x, data.y) : source;
+            console.log(url);
+    
             return (
                 <CreateTile
-                    key={key}
+                    key={`${side}-${level}x${data.x}x${data.y}`}
                     name={name}
                     side={side}
                     level={level}
@@ -64,7 +61,7 @@ export const Side: React.FC<SideProps> = ({ side, level, tiles, source, meshes }
                 />
             );
         });
-    }, [tiles, level, side, url]);
+    }, [tiles, level, side, source]);
 
     useEffect(() => {
         const group = groupRef.current;
@@ -72,7 +69,7 @@ export const Side: React.FC<SideProps> = ({ side, level, tiles, source, meshes }
             group.position.set(position[0], position[1], position[2]);
             group.rotation.set(rotation[0], rotation[1], rotation[2]);
             group.renderOrder = level + 1;
-            group.name = `${level}-${side}`;
+            group.name = `${side}-${level}`;
         }
     }, [position, rotation, level, side]);
 
@@ -107,8 +104,8 @@ export const Side: React.FC<SideProps> = ({ side, level, tiles, source, meshes }
     }, []);
 
     return (
-        <Canvas>
-            <group ref={groupRef}>
+        <Canvas camera={{ position: [0, 0, 5] }}>
+            <group ref={groupRef} >
                 {tileMeshes}
             </group>
         </Canvas>

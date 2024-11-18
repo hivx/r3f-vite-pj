@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { Plane } from '@react-three/drei';
 import { useLoader } from '@react-three/fiber';
-import { pano } from '@/components/resolution/config.json';
-import { DataProps } from '@/components/resolution/Types';
+import { pano } from '@/components/resolution//types/config.json';
+import { DataProps } from '@/components/resolution';
 
 type TileProps = {
   name: string;
@@ -24,31 +24,31 @@ export const CreateTile: React.FC<TileProps> = ({ name, side, level, data, sourc
   // Tính toán vị trí tile
   const tileBaseSize = pano.tileBase + pano.maxLevels - level;
   const half = tileBaseSize / 2;
-  const offsetX = data.width / 2 - half + data.offsetX;
-  const offsetY = half - data.height / 2 - data.offsetY;
+  const x = data.width / 2 - half + data.x;
+  const y = half - data.height / 2 - data.y;
 
   const meshRef = useRef<THREE.Mesh | null>(null);
 
   // Cấu trúc của Plane và MeshBasicMaterial trong Three Fiber
   useEffect(() => {
     if (meshRef.current) {
-      meshRef.current.position.set(offsetX, offsetY, 0);
+      meshRef.current.position.set(x, y, 0);
       meshRef.current.name = name;
     }
-  }, [offsetX, offsetY, name]);
+  }, [x, y, name]);
 
   // Thuộc tính của Plane và MeshBasicMaterial trong Three Fiber
   return (
-    <Plane
+    <Plane 
       args={[data.width, data.height]} // Tạo plane với kích thước từ dữ liệu
-      position={[offsetX, offsetY, 0]} // Đặt vị trí của tile
+      position={[x, y, 0]} // Đặt vị trí của tile
       rotation={[0, 0, 0]} // Xoay nếu cần
       name={name} // Đặt tên cho mesh
     >
       <meshBasicMaterial
         attach="material"
         map={texture}
-        side={THREE.DoubleSide}
+        side={THREE.BackSide}
         transparent
         opacity={1}
       />

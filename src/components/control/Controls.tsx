@@ -9,7 +9,7 @@ import { AppRoutes } from '@/routes';
 export const Controls: React.FC = () => {
     const isRoom = true;
     const [fov, setFov] = useState<number>(50);
-    const [isRotate, setIsRotate] = useState<boolean>(true);
+    const [isRotate, setIsRotate] = useState<boolean>(false);
 
     useEffect(() => {
         const handleWheel = (event: WheelEvent) => {
@@ -39,7 +39,7 @@ export const Controls: React.FC = () => {
             <Canvas onClick={handleRotate}>
                 <PerspectiveCamera 
                     makeDefault
-                    position={[0, 0, 100]}
+                    position={[0, 0, 5]}
                     fov={fov}
                 />
                 <OrbitControls
