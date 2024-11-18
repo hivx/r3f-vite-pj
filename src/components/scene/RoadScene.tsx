@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import * as THREE from 'three';
 import { useNavigate } from 'react-router-dom';
 import { Col, Row, Tooltip } from 'antd';
+
 import { Html } from '@react-three/drei';
 import { DownCircleTwoTone, LeftCircleTwoTone } from '@ant-design/icons';
 
-import { Imgloader } from '@/components';
+import { Imgloader } from '@/components/control';
 import { handleDoubleClick } from '@/components/actions';
 import { qiqi, road, sound, video } from '@/assets';
 import { StyledContent, StyledHeader, 
   StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
-import { Popup } from '@/popup';
+import { Popup } from '@/components/popup';
 
 export const RoadScene: React.FC = () => {
   const [circles, setCircles] = useState<JSX.Element[]>([]);

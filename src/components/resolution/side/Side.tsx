@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useRef } from 'react';
-import { Canvas } from '@react-three/fiber';
+import * as THREE from 'three';
+
 import { CreateTile, DataProps } from '@/components/resolution';
 import { pano } from '@/components/resolution/types/config.json';
-import * as THREE from 'three';
+
 
 type SideProps = {
     side: string;
@@ -104,11 +105,9 @@ export const Side: React.FC<SideProps> = ({ side, level, tiles, source, meshes }
     }, []);
 
     return (
-        <Canvas camera={{ position: [0, 0, 5] }}>
-            <group ref={groupRef} >
-                {tileMeshes}
-            </group>
-        </Canvas>
+        <group>
+            {tileMeshes}
+        </group>
     );
 };
 

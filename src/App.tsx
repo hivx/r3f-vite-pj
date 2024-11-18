@@ -1,5 +1,6 @@
 import React from 'react';
-import { Controls } from '@/components';
+
+import { Controls } from '@/components/control';
 
 const App: React.FC = () => {
   return (<Controls />);

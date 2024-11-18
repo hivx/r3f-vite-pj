@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import * as THREE from 'three';
 import { useNavigate } from 'react-router-dom';
 import { Col, Row, Tooltip } from 'antd';
+
 import { RightCircleTwoTone, UpCircleTwoTone } from '@ant-design/icons';
 import { Html } from '@react-three/drei';
 
-import { Imgloader } from '@/components';
+import { Imgloader } from '@/components/control';
 import { handleDoubleClick } from '@/components/actions';
 import { tof, sea, sound, video } from '@/assets';
 import { StyledContent, StyledHeader, 
   StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
-import { Popup } from '@/popup';
+import { Popup } from '@/components/popup';
 
 export const SeaScene: React.FC = () => {
   const [circles, setCircles] = useState<JSX.Element[]>([]);

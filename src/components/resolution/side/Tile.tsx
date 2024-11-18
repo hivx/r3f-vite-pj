@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+
 import { Plane } from '@react-three/drei';
 import { useLoader } from '@react-three/fiber';
+
 import { pano } from '@/components/resolution//types/config.json';
 import { DataProps } from '@/components/resolution';
 
@@ -39,20 +41,22 @@ export const CreateTile: React.FC<TileProps> = ({ name, side, level, data, sourc
 
   // Thuộc tính của Plane và MeshBasicMaterial trong Three Fiber
   return (
-    <Plane 
-      args={[data.width, data.height]} // Tạo plane với kích thước từ dữ liệu
-      position={[x, y, 0]} // Đặt vị trí của tile
-      rotation={[0, 0, 0]} // Xoay nếu cần
-      name={name} // Đặt tên cho mesh
-    >
-      <meshBasicMaterial
-        attach="material"
-        map={texture}
-        side={THREE.BackSide}
-        transparent
-        opacity={1}
-      />
-    </Plane>
+    <mesh>     
+      <Plane 
+        args={[data.width, data.height]} // Tạo plane với kích thước từ dữ liệu
+        position={[x, y, 0]} // Đặt vị trí của tile
+        rotation={[0, 0, 0]} // Xoay nếu cần
+        name={name} // Đặt tên cho mesh
+      >
+        <meshBasicMaterial
+          attach="material"
+          map={texture}
+          side={THREE.BackSide}
+          transparent
+          opacity={1}
+        />
+      </Plane>
+    </mesh>
   );
 
 };

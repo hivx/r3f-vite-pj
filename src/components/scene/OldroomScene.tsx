@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import * as THREE from 'three';
 import { Col, Row, Tooltip } from 'antd';
 import { useNavigate } from 'react-router-dom';
+
 import { LeftCircleTwoTone, RightCircleTwoTone, UpCircleTwoTone } from '@ant-design/icons';
 import { Html } from '@react-three/drei';
 
-import { Imgloader } from '@/components';
+import { Imgloader } from '@/components/control';
 import { handleDoubleClick } from '@/components/actions';
 import { oldroom, hiho, video, sound } from '@/assets';
 import { StyledContent, StyledHeader, 
   StyledLayoutPopup, StyledMedia, StyledPoint } from '@/style';
-import { Popup } from '@/popup';
+import { Popup } from '@/components/popup';
 
 export const OldroomScene: React.FC = () => {
   const [circles, setCircles] = useState<JSX.Element[]>([]);

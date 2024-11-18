@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import * as THREE from 'three';
 import { useNavigate } from 'react-router-dom';
 import { Col, Row, Tooltip } from 'antd';
+
 import { Html } from '@react-three/drei';
 import { RightCircleTwoTone } from '@ant-design/icons';
 
 import { StyledContent, StyledHeader, StyledLayoutPopup, 
   StyledMedia, StyledPoint } from '@/style';
-import { Imgloader } from '@/components';
+import { Imgloader } from '@/components/control';
 import { handleDoubleClick } from '@/components/actions';
 import { bedroom, cat2, sound, video } from '@/assets';
-import { Popup } from '@/popup';
+import { Popup } from '@/components/popup';
 
 export const BedroomScene: React.FC = () => {
   const [circles, setCircles] = useState<JSX.Element[]>([]);

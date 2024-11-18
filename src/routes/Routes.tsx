@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+
 import { OldroomScene, IslandScene, BedroomScene, RoadScene, SeaScene, TestScene } from '@/components';
 import { Multires } from '@/components/resolution';
 // import { TestLoader } from '@/components/resolution';

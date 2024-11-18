@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+
 import { ThreeEvent, useLoader } from '@react-three/fiber';
 
 type DomeProps = {
