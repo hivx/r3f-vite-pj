@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import * as THREE from 'three';
 import { useNavigate } from 'react-router-dom';
 import { Col, Row, Tooltip } from 'antd';
-
 import { Html } from '@react-three/drei';
 import { LeftCircleTwoTone, RightCircleTwoTone } from '@ant-design/icons';
-
 import { Imgloader } from '@/components/control';
 import { handleDoubleClick } from '@/components/actions';
 import { cat1, island, sound, video } from '@/assets';
@@ -69,9 +67,20 @@ export const IslandScene: React.FC = () => {
     navigate(event);
   };
 
+  // Thêm mesh với material vào scene
+  const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
+  const boxMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Màu xanh lá
+  const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
+  boxMesh.position.set(0, 0, -10); // Đặt vị trí của hộp trong không gian
+
   return (
     <>
       <Imgloader onDoubleClick={(event) => handleDoubleClick(event, setCircles, setIsOpen)} background={island} />
+
+      {/* Render thêm mesh với meshBasicMaterial */}
+      <group>
+        <mesh geometry={boxGeometry} material={boxMaterial} position={new THREE.Vector3(0, 0, -10)} />
+      </group>
 
       {!isOpen &&
       <>
@@ -109,4 +118,3 @@ export const IslandScene: React.FC = () => {
     </>
   );
 };
-

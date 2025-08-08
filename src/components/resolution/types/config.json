@@ -1,6 +1,6 @@
 {
     "pano": {
-        "tileBase": 100,
+        "tileBase": 512,
         "maxLevels": 16,
         "pixelZoom": 2
     },

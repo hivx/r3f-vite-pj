@@ -15,7 +15,7 @@ export const Controls: React.FC = () => {
     useEffect(() => {
         const handleWheel = (event: WheelEvent) => {
             if (isRoom) {
-                const fovChange = event.deltaY > 0 ? 1 : -1;
+                const fovChange = event.deltaY > 0 ? 10 : -10;
                 setFov((prevFov) => {
                     const newFov = prevFov + fovChange;
                     return Math.max(15, Math.min(100, newFov));
@@ -23,7 +23,7 @@ export const Controls: React.FC = () => {
             }
         };
     
-        window.addEventListener('wheel', handleWheel);
+        window.addEventListener('wheel', handleWheel, { passive: true });
         return () => {
             window.removeEventListener('wheel', handleWheel);
         };
@@ -47,9 +47,9 @@ export const Controls: React.FC = () => {
                     enableZoom={false}
                     enablePan={true}
                     enableDamping={true}
-                    dampingFactor={0.5}
+                    dampingFactor={0.2}
                     autoRotate={isRotate}
-                    rotateSpeed={-0.5}
+                    rotateSpeed={-0.2}
                 />
                 <Suspense fallback={null}>
                     <AppRoutes />

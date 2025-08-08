@@ -4,7 +4,6 @@ import * as THREE from 'three';
 import { Plane } from '@react-three/drei';
 import { useLoader } from '@react-three/fiber';
 
-import { pano } from '@/components/resolution//types/config.json';
 import { DataProps } from '@/components/resolution';
 
 type TileProps = {
@@ -24,40 +23,36 @@ export const CreateTile: React.FC<TileProps> = ({ name, side, level, data, sourc
   const texture = useLoader(THREE.TextureLoader, url);
 
   // Tính toán vị trí tile
-  const tileBaseSize = pano.tileBase + pano.maxLevels - level;
-  const half = tileBaseSize / 2;
-  const x = data.width / 2 - half + data.x;
-  const y = half - data.height / 2 - data.y;
+  const setX = data.x * data.width;
+  const setY = data.y * data.height;
+  console.log(setX, setY);
 
   const meshRef = useRef<THREE.Mesh | null>(null);
 
   // Cấu trúc của Plane và MeshBasicMaterial trong Three Fiber
   useEffect(() => {
     if (meshRef.current) {
-      meshRef.current.position.set(x, y, 0);
+      meshRef.current.position.set(setX, setY, 0);
       meshRef.current.name = name;
     }
-  }, [x, y, name]);
+  }, [setX, setY, name]);
 
   // Thuộc tính của Plane và MeshBasicMaterial trong Three Fiber
-  return (
-    <mesh>     
-      <Plane 
-        args={[data.width, data.height]} // Tạo plane với kích thước từ dữ liệu
-        position={[x, y, 0]} // Đặt vị trí của tile
-        rotation={[0, 0, 0]} // Xoay nếu cần
-        name={name} // Đặt tên cho mesh
-      >
-        <meshBasicMaterial
-          attach="material"
-          map={texture}
-          side={THREE.BackSide}
-          transparent
-          opacity={1}
-        />
-      </Plane>
-    </mesh>
+  return (  
+    <Plane 
+      args={[data.width, data.height]} // Tạo plane với kích thước từ dữ liệu
+      position={[setX, setY, 0]} // Đặt vị trí của tile
+      rotation={[0, 0, 0]} // Xoay nếu cần
+      name={name} // Đặt tên cho mesh
+    >
+      <meshBasicMaterial
+        attach="material"
+        map={texture}
+        side={THREE.BackSide}
+        transparent
+        opacity={1}
+      />
+    </Plane>
   );
-
 };
 

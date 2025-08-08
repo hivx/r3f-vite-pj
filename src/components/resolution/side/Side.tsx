@@ -2,8 +2,7 @@ import React, { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
 import { CreateTile, DataProps } from '@/components/resolution';
-import { pano } from '@/components/resolution/types/config.json';
-
+// import { pano } from '@/components/resolution/types/config.json';
 
 type SideProps = {
     side: string;
@@ -13,8 +12,8 @@ type SideProps = {
     meshes: string[];
 };
 
-const sidePosition = (side: string, level: number) => {
-    const tileBaseSize = pano.tileBase + pano.maxLevels - level;
+const sidePosition = (side: string) => {
+    const tileBaseSize = 10;
     const half = tileBaseSize / 2;
     switch (side) {
         case 'f': return [0, 0, half];
@@ -41,7 +40,7 @@ const sideRotation = (side: string) => {
 
 export const Side: React.FC<SideProps> = ({ side, level, tiles, source, meshes }) => {
     const groupRef = useRef<THREE.Group>(null);
-    const position = sidePosition(side, level);
+    const position = sidePosition(side);
     const rotation = sideRotation(side);
 
     const tileMeshes = useMemo(() => {
@@ -105,7 +104,7 @@ export const Side: React.FC<SideProps> = ({ side, level, tiles, source, meshes }
     }, []);
 
     return (
-        <group>
+        <group ref={groupRef}>
             {tileMeshes}
         </group>
     );
