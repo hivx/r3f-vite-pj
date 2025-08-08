@@ -31,7 +31,6 @@ export const Controls: React.FC = () => {
     
     const handleRotate = () => {
         setIsRotate(false);
-        // setIsRotate(prev => !prev);
     };
 
     return (

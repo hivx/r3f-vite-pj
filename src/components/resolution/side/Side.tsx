@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
 import { CreateTile, DataProps } from '@/components/resolution';
-// import { pano } from '@/components/resolution/types/config.json';
 
 type SideProps = {
     side: string;
